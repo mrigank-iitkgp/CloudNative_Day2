@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mgkcloud01
+spec:
+  selector:
+    matchLabels:
+      app: mgkcloud01-pod
+  template:
+    metadata:
+      labels:
+        app: mgkcloud01-pod
+    spec:
+      containers:
+      - name: mgkcloud01-contaniner
+        image: barclaysacr02.azurecr.io/mgkcloud01:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
